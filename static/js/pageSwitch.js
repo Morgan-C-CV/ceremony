@@ -68,28 +68,9 @@ function initPageSwitch(currentPage, totalPages) {
                 }
                 
                 setTimeout(() => {
-                    const bgMusic = document.getElementById('bgMusic');
-                    const currentTime = bgMusic.currentTime;
-                    const isPlaying = !bgMusic.paused;
-                    window.location.href = '/p' + nextPage + '#bgMusic=' + currentTime + '&play=' + (isPlaying ? '1' : '0');
+                    window.location.href = '/p' + nextPage;
                 }, 500);
             }
         }
     }
 }
-
-// 在页面加载时检查URL中的音乐播放时间参数
-window.addEventListener('load', function() {
-    const bgMusic = document.getElementById('bgMusic');
-    if (bgMusic) {
-        const hash = window.location.hash;
-        if (hash.includes('bgMusic=')) {
-            const time = parseFloat(hash.split('=')[1].split('&')[0]);
-            const shouldPlay = hash.includes('play=1');
-            bgMusic.currentTime = time;
-            if (shouldPlay) {
-                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-            }
-        }
-    }
-});
