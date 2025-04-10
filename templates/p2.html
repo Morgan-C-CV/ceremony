@@ -26,6 +26,18 @@ body { margin: 0; padding: 0; }
   transform-origin: center center;
   transform-style: preserve-3d;
 }
+
+/* 添加渐进显示动画相关样式 */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 #P2 {
   position: absolute;
   left: 0px;
@@ -114,7 +126,7 @@ body { margin: 0; padding: 0; }
   transform-origin: center center;
   transform: rotate(-10.800736884484625deg);
   border-radius: 10px;
-  background-image: url('assets/ebebc082c8168846809a55b3c66248f-1.png');
+  background-image: url('/static/ebebc082c8168846809a55b3c66248f-1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -125,23 +137,37 @@ body { margin: 0; padding: 0; }
 }
 
 </style>
+<script src="/static/js/pageSwitch.js"></script>
 </head>
 <body>
 <div class="figma-root" style="position: relative; width: 100%; height: 100%;">
   <div id="P2" class="figma-frame" data-figma-type="FRAME">
-    <p id="---UU------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">亲爱的UU:
+    <p id="---UU------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal fade-in-element" data-figma-type="TEXT">亲爱的UU:
 展信佳！</p>
-    <p id="----------------------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">当你看到这里，不知你是否还能想起那个微微闷热的雨夜...</p>
-    <p id="--------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">你们的故事
-就此开始了。。。</p>
-    <p id="---------------------------------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">那晚上的那张模糊照片，
+    <p id="----------------------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal fade-in-element" data-figma-type="TEXT">当你看到这里，不知你是否还能想起那个微微闷热的雨夜...</p>
+    <p id="---------------------------------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal fade-in-element" data-figma-type="TEXT">那晚上的那张模糊照片，
 开启了两个大学生活中
 最特殊、最珍贵的
 一段时光...</p>
-      <div id="ebebc082c8168846809a55b3c66248f-1" class="figma-rectangle" data-figma-type="RECTANGLE">
-      </div>
-      </div>
+    <div id="ebebc082c8168846809a55b3c66248f-1" class="figma-rectangle fade-in-element" data-figma-type="RECTANGLE"></div>
+    <p id="--------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal fade-in-element" data-figma-type="TEXT">你们的故事
+就此开始了。。。</p>
   </div>
 </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  initPageSwitch(2, 11);
+  
+  // 渐进显示动画控制
+  const elements = document.querySelectorAll('.fade-in-element');
+  let delay = 500;
+  
+  elements.forEach((element, index) => {
+    setTimeout(() => {
+      element.classList.add('visible');
+    }, delay * (index + 1));
+  });
+});
+</script>
 </html>

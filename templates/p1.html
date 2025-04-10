@@ -88,6 +88,7 @@ body { margin: 0; padding: 0; }
 }
 
 </style>
+<script src="/static/js/pageSwitch.js"></script>
 </head>
 <body>
 <div class="figma-root" style="position: relative; width: 100%; height: 100%;">
@@ -117,13 +118,11 @@ body { margin: 0; padding: 0; }
                     opacity="1"
                     filter="url(#filter-Ellipse-1-0)"/>
     </svg>
-      <svg id="Vector-2" class="figma-vector" data-figma-type="VECTOR" 
+      <svg id="Vector-2" class="figma-vector" data-figma-type="VECTOR" YX
                 width="545" height="270" viewBox="0 0 545 270" 
                 xmlns="http://www.w3.org/2000/svg"
-                style="position: absolute; left: -99.00000000000001px; top: 527px;">
-        <g transform="translate(272.5 135) rotate(180) translate(-272.5 -135)">
+                style="position: absolute; left: -99.00000000000001px; top: 800px; transform: scaleX(-1);">
         <path d="M 544.601318359375 12.717886924743652 C 444.101318359375 -37.28211307525635 34.6013126373291 71.71788024902344 10.601312637329102 139.21788024902344 C -8.598688125610352 193.21788024902344 2.6013126373291016 249.0512237548828 10.601312637329102 270.2178955078125 L 544.601318359375 256.7178955078125 L 544.601318359375 12.717886924743652 Z" fill="rgba(160, 206, 86, 1)" stroke="none" stroke-width="1" opacity="1"/>
-        </g>
       </svg>
       </div>
     <p id="-------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">悠悠和源源的
@@ -163,4 +162,9 @@ body { margin: 0; padding: 0; }
   </div>
 </div>
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initPageSwitch(1, 11);
+  });
+</script>
 </html>

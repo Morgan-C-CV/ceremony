@@ -85,6 +85,8 @@ body { margin: 0; padding: 0; }
   letter-spacing: 0em;
   text-align: center;
   color: rgba(255, 255, 255, 1);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 #n-365 {
@@ -105,7 +107,13 @@ body { margin: 0; padding: 0; }
   color: rgba(255, 255, 255, 1);
 }
 
+.time-unit {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 </style>
+<script src="/static/js/pageSwitch.js"></script>
 </head>
 <body>
 <div class="figma-root" style="position: relative; width: 100%; height: 100%;">
@@ -115,15 +123,47 @@ body { margin: 0; padding: 0; }
     <p id="--------------------------" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">这么长的时间，
 一定有许许多多的珍贵记忆
 .....</p>
-    <p id="--XXXX----XXX----XXXX--" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">天
-XXXX
-小时
-XXX
-分钟
-XXXX
-秒</p>
+    <p id="--XXXX----XXX----XXXX--" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">天<br><span class="time-unit" id="hours">0</span>小时
+<span class="time-unit" id="minutes">0</span>分钟
+<span class="time-unit" id="seconds">0</span>秒</p>
     <p id="n-365" class="figma-text font-zcool-xiaowei font-zcool-xiaowei-normal" data-figma-type="TEXT">365</p>
   </div>
 </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  initPageSwitch(3, 11);
+
+  const targetDate = new Date('2024-04-11T23:59:00+08:00');
+  const timeUnits = document.querySelectorAll('.time-unit');
+  const timeContainer = document.getElementById('--XXXX----XXX----XXXX--');
+
+  setTimeout(() => {
+    timeContainer.style.opacity = '1';
+  }, 500);
+
+  timeUnits.forEach((unit, index) => {
+    setTimeout(() => {
+      unit.style.opacity = '1';
+    }, 1000 + (index * 500));
+  });
+
+  function updateTime() {
+    const now = new Date();
+    const diff = now - targetDate;
+
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('n-365').innerHTML = Math.abs(Math.floor(diff / (1000 * 60 * 60 * 24)));
+    document.getElementById('hours').textContent = Math.abs(hours);
+    document.getElementById('minutes').textContent = Math.abs(minutes);
+    document.getElementById('seconds').textContent = Math.abs(seconds);
+}
+
+  updateTime();
+  setInterval(updateTime, 1000);
+});
+</script>
 </html>
