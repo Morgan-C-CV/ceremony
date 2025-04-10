@@ -493,7 +493,25 @@ body { margin: 0; padding: 0; }
 </html>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    initPageSwitch(4, 11);
+    const isPage4 = window.location.pathname.includes('/p4');
+    
+    function isAtBottom() {
+      console.log(window.innerHeight + window.scrollY);
+      return window.innerHeight + window.scrollY >= 3117;
+    }
+    
+    if (isPage4) {
+      window.addEventListener('scroll', function() {
+        if (isAtBottom()) {
+          initPageSwitch(4, 11);
+        }
+      });
+    } else {
+      initPageSwitch(4, 11);
+    }
   });
 </script>
 </html>
+<!-- <audio id="bgMusic" loop autoplay> -->
+  <source src="/static/1.mp3" type="audio/mpeg">
+</audio>

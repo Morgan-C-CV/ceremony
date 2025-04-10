@@ -184,7 +184,16 @@ body { margin: 0; padding: 0; }
   background-position: center;
   background-repeat: no-repeat;
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 <script src="/static/js/pageSwitch.js"></script>
 </head>
@@ -304,6 +313,29 @@ body { margin: 0; padding: 0; }
 </html>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    const elements = [
+      document.getElementById('---------------------'),
+      document.getElementById('Vector-2'),
+      document.getElementById('--'),
+      document.getElementById('n-3257-'),
+      document.getElementById('Vector-1'),
+      document.getElementById('---1'),
+      document.getElementById('n-2557-'),
+      document.getElementById('Vector'),
+      document.getElementById('---2'),
+      document.getElementById('n-1242-'),
+      document.getElementById('-------------------------'),
+      document.getElementById('kiss-1')
+    ];
+
+    elements.forEach(el => el.classList.add('fade-in'));
+    
+    elements.forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add('show');
+      }, index * 500);
+    });
+    
     initPageSwitch(6, 11);
   });
 </script>

@@ -6,6 +6,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<!-- <audio id="bgMusic" autoplay loop> -->
+  <source src="/static/1.mp3" type="audio/mpeg">
+</audio>
 <style>
 * { box-sizing: border-box; }
 body { margin: 0; padding: 0; }
@@ -162,9 +165,18 @@ body { margin: 0; padding: 0; }
   </div>
 </div>
 </body>
+<audio id="bgMusic" loop autoplay>
+  <source src="/static/1.mp3" type="audio/mpeg">
+</audio>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     initPageSwitch(1, 11);
+    
+    // 添加点击事件监听器来播放音乐
+    document.body.addEventListener('click', function() {
+      const bgMusic = document.getElementById('bgMusic');
+      bgMusic.play().catch(e => console.log('自动播放被阻止:', e));
+    });
   });
 </script>
 </html>
