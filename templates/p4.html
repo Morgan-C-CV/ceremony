@@ -8,7 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; }
-body { margin: 0; padding: 0; }
+body { 
+  margin: 0; 
+  padding: 0; 
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
 .figma-frame, .figma-group, .figma-rectangle, .figma-text, .figma-image, .figma-vector { position: absolute; }
 .figma-text, p { margin: 0; padding: 0; }
 .figma-vector { overflow: visible; }
@@ -26,14 +32,20 @@ body { margin: 0; padding: 0; }
   transform-origin: center center;
   transform-style: preserve-3d;
 }
+.figma-root {
+    width: 100vw;
+    height: 100%;
+    overflow-x: hidden;
+}
 #P4 {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 1170.030029296875px;
-  height: 8481.357421875px;
-  background: linear-gradient(177deg, rgba(54, 121, 191, 1) 1%, rgba(255, 194, 224, 1) 14%, rgba(255, 173, 173, 1) 30%, rgba(255, 216, 157, 1) 70%, rgba(59, 122, 191, 1) 100%);
-  overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;  /* 修改为100vw */
+    max-width: 1170.030029296875px;
+    height: 8481.357421875px;
+    background: linear-gradient(177deg, rgba(54, 121, 191, 1) 1%, rgba(255, 194, 224, 1) 14%, rgba(255, 173, 173, 1) 30%, rgba(255, 216, 157, 1) 70%, rgba(59, 122, 191, 1) 100%);
+    overflow: hidden;
 }
 
 #ChatGPT-Image-2025-4-6--13_05_53-2 {
