@@ -1,6 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, abort
 
 app = Flask(__name__)
+
+@app.before_request
+def block_bad_requests():
+    if not request.headers.get("User-Agent"):
+        abort(400)  # 拒绝无 User-Agent 的请求
+
+@app.errorhandler(400)
+def handle_bad_request(e):
+    return "Bad Request", 400
 
 @app.route('/')
 def index():
