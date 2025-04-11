@@ -26,11 +26,28 @@ body { margin: 0; padding: 0; }
   transform-origin: center center;
   transform-style: preserve-3d;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.figma-root {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
 #P4 {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 1170.030029296875px;
+  left: 0;
+  top: 0;
+  width: 100vw;
   height: 8481.357421875px;
   background: linear-gradient(177deg, rgba(54, 121, 191, 1) 1%, rgba(255, 194, 224, 1) 14%, rgba(255, 173, 173, 1) 30%, rgba(255, 216, 157, 1) 70%, rgba(59, 122, 191, 1) 100%);
   overflow: hidden;
